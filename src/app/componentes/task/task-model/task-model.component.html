@@ -1,0 +1,21 @@
+<div class="pensamento {{ task.difficulty}} ff-roboto-mono "[ngClass]="widthTask()"><!--Utiliza o ngClass para determinar a largura do conteudo da task dependendo da quantidade de letras-->
+  <img src="/assets/imagens/{{ task.difficulty }}.png" alt="Aspas coloridas">
+  <p class="conteudo">{{task.content}}</p>
+  <p class="autoria"><b>{{task.author}}</b></p>
+  <div class="acoes">
+    <button class="botao-editar">
+      <img src="/assets/imagens/icone-editar.png" alt="Iconde de edição">
+    </button>
+    <button class="botao-excluir">
+      <img src="/assets/imagens/icone-excluir.png" alt="Iconde de remoção">
+    </button>
+
+  </div>
+</div>
+<!--
+No task.difficulty deve ser entre chaves duplas {{}} para acionar a interpolação que
+renderizará dentro do arquivo HTML o modelo que criamos no arquivo TS.
+
+Aqui será também renderizado o estilo que colamos no arquivo CSS, como por exemplo as
+bordas sombreadas.
+-->

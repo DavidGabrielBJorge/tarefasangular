@@ -2,6 +2,7 @@ import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TaskCreateComponent } from './componentes/task/task-create/task-create.component';
 import { ListTaskComponent } from './componentes/task/list-task/list-task.component';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   {

@@ -3,4 +3,27 @@
     <h2 class="title ff-inter">Minhas tarefas</h2>
     <button routerLink="/criarTask" class="botao">Adicionar tarefa</button>
   </header>
+  <!--Caso a listTask for maior que zero deve gerar a div abaixo se não, não vai gerar-->
+  <div class="mural" *ngIf="listTasks.length > 0, else noTasks">
+
+    <!--Para mostrar todas as tarefas já criadas é preciso criar uma estrutura de repetição-->
+    <div *ngFor="let task of listTasks">
+      <app-task-model [task]="task"></app-task-model>
+      <!--O task vai receber a variável local task(que representa cada um dos elementos) -->
+    </div>
+
+  </div>
 </section>
+
+<!--Por padrão não é renderizado-->
+<ng-template #noTasks>
+  <div class="ff-inter no-task">
+    <p>Não há tarefas cadastradas</p>
+  </div>
+</ng-template>
+<!-- Para criar uma estrutura de repetição é preciso usar o ngFor, nesse caso estaremos
+informando que queremos iterar a lista de tasks, e que cada elemento da lista será uma
+task diferente
+
+De forma básica ele vai mostrar vários elementos com a mesma estrutura básica.
+-->
