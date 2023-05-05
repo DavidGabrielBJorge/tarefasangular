@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Task } from '../task';
 
 @Component({
   selector: 'app-task-model',
@@ -11,7 +12,8 @@ export class TaskModelComponent implements OnInit {
   O Input é um decorator que informa que a propriedade task vai receber informações do
   componente pai
   */
-  @Input() task ={
+  @Input() task: Task ={
+    id: 0,
     content: 'Estudar Angular',
     author: 'Ciclano',
     difficulty:'difficulty2'
