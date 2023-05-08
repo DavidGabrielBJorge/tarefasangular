@@ -9,6 +9,9 @@ import { TaskCreateComponent } from './componentes/task/task-create/task-create.
 import { FormsModule } from '@angular/forms';
 import { ListTaskComponent } from './componentes/task/list-task/list-task.component';
 import { TaskModelComponent } from './componentes/task/task-model/task-model.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DeleteTaskComponent } from './componentes/task/delete-task/delete-task.component';
+import { EditTaskComponent } from './componentes/task/edit-task/edit-task.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +20,15 @@ import { TaskModelComponent } from './componentes/task/task-model/task-model.com
     FooterComponent,
     TaskCreateComponent,
     ListTaskComponent,
-    TaskModelComponent
+    TaskModelComponent,
+    DeleteTaskComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

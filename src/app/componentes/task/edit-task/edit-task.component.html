@@ -1,4 +1,4 @@
-<section class="container criar-pensamentos ff-inter">
+<section class="container editar-pensamentos ff-inter">
   <header class="header">
       <h2>Adicione um <br> pensamento novo:</h2>
   </header>
@@ -65,76 +65,8 @@
           </div>
     </div>
     <div class="acoes">
-      <button class="botao" (click)="create()">Salvar</button>
+      <button class="botao" (click)="editarTask()">Editar</button>
       <button class="botao" (click)="cancel()">Cancelar</button>
   </div>
   </form>
 </section>
-<!--
-Para fazer a lógica de mostrar as tarefas é necessário aplicar o property blinding:
-
-Dentro do arquivo task-create.component.ts terá um objeto chamado "pensamento" com os seguintes itens:
-  pensamento = {
-    id: '1',
-    conteudo: 'teste',
-    autoria: 'fulano',
-    difficulty:''
-  }
-Para acessar e mostrar na view é preciso fazer da seguinte forma:
-<p class="conteudo">{{ task.content }}</p>
-
-Deve usar "{{ }}" e além disso deve aplicar os espaços no início e no fim
-
-Obs: Caso queira aplicar no input deve ser feito dessa maneira:
-
-  <input
-    type="text"
-    class="input"
-    id="author"
-    name="task"
-    placeholder="Digite o responsável para a sua tarefa"
-    [value]="task.author"
-  >
-======================================================================================
-Outro exemplo:
-perfil.component.ts possui:
-
-@Component({
-  selector: 'app-perfil',
-  templateUrl: './perfil.component.html',
-  styles: []
-})
-export class PerfilComponent {
-  usuario = {
-    nome: 'Cláudia Ohio',
-    imgPerfil: './assets/foto-1445.jpg'
-  }
-}
-
-Pode ser feito dessas duas formas:
-<div class="card-perfil">
-    <p>{{usuario.nome}}</p>
-    <img src="{{usuario.imgPerfil}}" alt="Imagem de perfil">
-</div>
-Obs caso 2: A interpolação é a incorporação de expressões em texto com o uso de chaves
-duplas como delimitadores.
-
-
-<div class="card-perfil">
-    <p [textContent]="usuario.nome"></p>
-    <img [src]="usuario.imgPerfil" alt="Imagem de perfil">
-</div>
-Obs caso 2:
-A vinculação de propriedades ajuda a definir o valor de uma propriedade criada dentro
-do componente para uma propriedade de um elemento HTML. para isso basta colocar a propriedade
-entre colchetes e passar como valor a propriedade do componente.
-
-======================================================================================
-Two-way data binding mantém a informação atualizada nas duas pontas da comunicação.
-
-Dessa forma o usuário consegue criar e ao mesmo tempo alterar o estado de um texto por
-exemplo.
-
-Este binding combina o recurso do property binding e o event binding em uma única notação
-usando a diretiva ngModel.[(ngModel)]=”nome-da-propriedade”
--->

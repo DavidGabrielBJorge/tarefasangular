@@ -1,5 +1,5 @@
 export interface Task {
-  id: number,
+  id?: number,
   content: string,
   author: string,
   difficulty: string

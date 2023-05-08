@@ -4,19 +4,25 @@
       "id": 1,
       "content": "Testando o banco 1",
       "author": "David",
-      "difficulty":"difficulty3"
-    },
-    {
-      "id": 2,
-      "content": "Testando o banco 2",
-      "author": "Maria",
-      "difficulty":"difficulty1"
+      "difficulty": "difficulty3"
     },
     {
       "id": 3,
       "content": "Testando o banco 3",
       "author": "Pedro",
-      "difficulty":"difficulty2"
+      "difficulty": "difficulty2"
+    },
+    {
+      "content": "Testando o cadastro de task",
+      "author": "Paulo Ferreira",
+      "difficulty": "difficulty3",
+      "id": 4
+    },
+    {
+      "content": "Editando pensamento",
+      "author": "Carlos",
+      "difficulty": "difficulty3",
+      "id": 5
     }
   ]
 }

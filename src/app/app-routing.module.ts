@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { TaskCreateComponent } from './componentes/task/task-create/task-create.component';
 import { ListTaskComponent } from './componentes/task/list-task/list-task.component';
 import { CommonModule } from '@angular/common';
+import { DeleteTaskComponent } from './componentes/task/delete-task/delete-task.component';
+import { EditTaskComponent } from './componentes/task/edit-task/edit-task.component';
 
 const routes: Routes = [
   {
@@ -17,6 +19,14 @@ const routes: Routes = [
   {
     path: 'listarTask',
     component: ListTaskComponent
+  },
+  {
+    path: 'tasks/excluirTask/:id',
+    component: DeleteTaskComponent
+  },
+  {
+    path: 'tasks/editarTask/:id',
+    component: EditTaskComponent
   }
 ];
 

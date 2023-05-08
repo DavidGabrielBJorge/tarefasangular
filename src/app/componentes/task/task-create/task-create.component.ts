@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskService } from '../task.service';
+import { Router } from '@angular/router';
 /*Este arquivo será responsável por criar a lógica do projeto */
 
 @Component({
@@ -9,30 +11,35 @@ import { Component, OnInit } from '@angular/core';
 export class TaskCreateComponent implements OnInit {
 
   task = {
-    id: '1',
-    content: 'Estudar Angular',
-    author: 'Fulano',
+    content: '',
+    author: '',
     difficulty:'difficulty1'
   }
 
-  constructor() { }
+  //injetar o serviço
+  constructor(
+    private service: TaskService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
   create(){
-    alert("novo pensamento criado")
+    this.service.criar(this.task).subscribe(()=>
+    this.router.navigate(['/listarTask']))
+    //Ao criar um pensamento vai voltar para a tela de lista task
   }
 
   cancel(){
-    alert("pensamento cancelado")
+    this.router.navigate(['/listarTask'])
   }
 
 }
 
 /*
 O nosso formulário está quase pronto, mas ainda temos um problema a resolver: se a gente
-digitar qualquer outro conteúdo nos campos "Pensamento" e "Autoria", a prévia não exibirá
+digitar qualquer outro conteúdo nos campos "task" e "author", a prévia não exibirá
 esse texto, e sim o texto que colocamos no código. Ou seja, o conteúdo da Prévia está fixo.
 
 Isso acontece pois até agora estamos utilizando somente associações de dados unidirecionais.
