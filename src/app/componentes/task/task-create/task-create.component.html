@@ -2,21 +2,21 @@
   <header class="header">
       <h2>Adicione um <br> pensamento novo:</h2>
   </header>
-  <form>
+  <form [formGroup]="formulario">
     <!--Inputs dos campos das tarefas-->
     <label for="task">Tarefa:</label>
-<input type="textarea" class="input" id="task" name="task" placeholder="Digite sua tarefa" [(ngModel)]="task.content">
+    <input type="textarea" class="input" id="task" formControlName="content" placeholder="Digite sua tarefa" >
     <!--Aplicando "data binding" bidirecional, para isso deve importar no arquivo app.module.ts o FormsModule-->
 
     <label for="author">Responsável:</label>
-    <input type="text" class="input" id="author" name="author" placeholder="Digite o responsável para a sua tarefa" [(ngModel)]="task.author">
+    <input type="text" class="input" id="author" formControlName="author" placeholder="Digite o responsável para a sua tarefa">
     <label for="difficulty">Seleciona o nível de atenção da tarefa</label>
 
     <div class="container-radio">
       <!--difficulty 1 das tarefas-->
       <div class="radio-difficulty">
           <label for="difficulty1">
-              <input type="radio" id="difficulty1" value="difficulty1" name="difficulty-card" [(ngModel)]="task.difficulty">
+              <input type="radio" id="difficulty1" value="difficulty1" formControlName="difficulty" >
               <div class="custom-radio">
                   <span></span>
               </div>
@@ -25,15 +25,15 @@
           Prévia
           <div class="difficulty difficulty1 ff-roboto-mono">
             <img src="../../../../assets/imagens/modelo1.png" alt="Aspas azuis">
-            <p class="conteudo">{{ task.content }}</p><!--Dessa forma vai pegar a informação do objeto pensamento, categoria-->
-            <p class="autoria"><b>{{ task.author }}</b></p>
+            <p class="conteudo">{{ formulario.get('content')?.value }}</p><!--Dessa forma vai pegar a informação do objeto pensamento, categoria-->
+            <p class="autoria"><b>{{ formulario.get('author')?.value }}</b></p>
           </div>
       </div>
 
       <!--difficulty 2 das tarefas-->
       <div class="radio-difficulty">
         <label for="difficulty2">
-            <input type="radio" id="difficulty2" value="difficulty2" name="difficulty-card" [(ngModel)]="task.difficulty">
+            <input type="radio" id="difficulty2" value="difficulty2" formControlName="difficulty" >
             <div class="custom-radio">
                 <span></span>
             </div>
@@ -42,15 +42,15 @@
         Prévia
         <div class="difficulty difficulty2 ff-roboto-mono">
           <img src="../../../../assets/imagens/modelo2.png" alt="Aspas azuis claro" >
-          <p class="conteudo">{{ task.content }}</p>
-          <p class="autoria"><b>{{ task.author }}</b></p>
+          <p class="conteudo">{{ formulario.get('content')?.value }}</p>
+          <p class="autoria"><b>{{ formulario.get('author')?.value }}</b></p>
         </div>
       </div>
 
           <!--difficulty 3 das tarefas-->
           <div class="radio-difficulty">
             <label for="difficulty3">
-                <input type="radio" id="difficulty3" value="difficulty3" name="difficulty-card" [(ngModel)]="task.difficulty">
+                <input type="radio" id="difficulty3" value="difficulty3" formControlName="difficulty">
                 <div class="custom-radio">
                     <span></span>
                 </div>
@@ -59,8 +59,8 @@
             Prévia
             <div class="difficulty difficulty3 ff-roboto-mono">
               <img src="../../../../assets/imagens/modelo3.png" alt="Aspas verdes">
-              <p class="conteudo">{{ task.content }}</p>
-              <p class="autoria"><b>{{ task.author }}</b></p>
+              <p class="conteudo">{{ formulario.get('content')?.value}}</p>
+              <p class="autoria"><b>{{ formulario.get('author')?.value }}</b></p>
             </div>
           </div>
     </div>
@@ -91,7 +91,7 @@ Obs: Caso queira aplicar no input deve ser feito dessa maneira:
     type="text"
     class="input"
     id="author"
-    name="task"
+    formControlName="task"
     placeholder="Digite o responsável para a sua tarefa"
     [value]="task.author"
   >

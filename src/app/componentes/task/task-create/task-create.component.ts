@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../task.service';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 /*Este arquivo será responsável por criar a lógica do projeto */
 
 @Component({
@@ -10,23 +11,28 @@ import { Router } from '@angular/router';
 })
 export class TaskCreateComponent implements OnInit {
 
-  task = {
-    content: '',
-    author: '',
-    difficulty:'difficulty1'
-  }
+
+  //Bloco usado para construir um formulário reativo (são formulários usados devido ao seu poder de conseguir reagir a mudanças que acontecem dentro dele, podendo utilizar os observables)
+  formulario!: FormGroup
 
   //injetar o serviço
   constructor(
     private service: TaskService,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder//Vai ser responsável pela construção do formulário
   ) { }
 
   ngOnInit(): void {
+    this.formulario = this.formBuilder.group({
+      content: ['Formulário reativo'],
+      author: ['Marcus'],
+      difficulty:['difficulty1']
+
+    })
   }
 
   create(){
-    this.service.criar(this.task).subscribe(()=>
+    this.service.criar(this.formulario.value).subscribe(()=>
     this.router.navigate(['/listarTask']))
     //Ao criar um pensamento vai voltar para a tela de lista task
   }
