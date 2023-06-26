@@ -6,12 +6,27 @@
     <!--Inputs dos campos das tarefas-->
     <label for="task">Tarefa:</label>
     <input type="textarea" class="input" id="task" formControlName="content" placeholder="Digite sua tarefa" >
+
+    <!--Mensagem de erro-->
+    <div class="mensagem_erro" *ngIf="formulario.get('content')?.errors && formulario.get('content')?.touched">
+      Tarefa é obrigatório
+    </div>
+
     <!--Aplicando "data binding" bidirecional, para isso deve importar no arquivo app.module.ts o FormsModule-->
 
     <label for="author">Responsável:</label>
     <input type="text" class="input" id="author" formControlName="author" placeholder="Digite o responsável para a sua tarefa">
-    <label for="difficulty">Seleciona o nível de atenção da tarefa</label>
 
+    <!--Se no campo de autoria estiver um erro e esse erro for required, deve aparecer a mensagem, além disso deve tocar(função touched) no campo para aparecer a mensagem-->
+    <div class="mensagem_erro" *ngIf="formulario.get('author')?.errors?.['required'] && formulario.get('author')?.touched" >
+      Autoria é obrigatório
+    </div>
+
+    <div class="mensagem_erro" *ngIf="formulario.get('author')?.errors?.['minlength'] && formulario.get('author')?.touched">
+      Autoria precisa ter no mínimo 3 caracteres
+    </div>
+
+    <label for="difficulty">Seleciona o nível de atenção da tarefa</label>
     <div class="container-radio">
       <!--difficulty 1 das tarefas-->
       <div class="radio-difficulty">
@@ -65,7 +80,8 @@
           </div>
     </div>
     <div class="acoes">
-      <button class="botao" (click)="create()">Salvar</button>
+      <!--O ngClass é usado para mudar a classe de um componente, nesse caso o botão-->
+      <button [disabled]="!formulario.valid" (click)="create()" [ngClass]="habilitarBotao()">Salvar</button><!--Se o formulário não estiver válido o botão deve ser desabilitado-->
       <button class="botao" (click)="cancel()">Cancelar</button>
   </div>
   </form>

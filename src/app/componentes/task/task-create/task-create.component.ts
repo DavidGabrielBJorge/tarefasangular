@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../task.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 /*Este arquivo será responsável por criar a lógica do projeto */
 
 @Component({
@@ -24,21 +24,42 @@ export class TaskCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
-      content: ['Formulário reativo'],
-      author: ['Marcus'],
+      content: ['', Validators.compose([
+        Validators.required,//Obriga o campo ser preenchido
+        Validators.pattern(/(.|\s)*\S(.|\s)*/)//não permite espaços vazios
+      ])],//Validators é uma classe do Angular que possui várias formas de validar um campo/variável
+      author: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(3)
+      ])],
       difficulty:['difficulty1']
 
+      //Validators.compose é usado para usar mais de um tipo de validação
     })
   }
 
   create(){
-    this.service.criar(this.formulario.value).subscribe(()=>
-    this.router.navigate(['/listarTask']))
+    console.log(this.formulario.get('author')?.errors)
+    //Caso o formula´rio for válido o pensamento deve ser criado
+    if(this.formulario.valid){
+      this.service.criar(this.formulario.value).subscribe(()=>
+      this.router.navigate(['/listarTask']))
     //Ao criar um pensamento vai voltar para a tela de lista task
+    }
+
   }
 
   cancel(){
     this.router.navigate(['/listarTask'])
+  }
+
+  habilitarBotao():string{
+    if(this.formulario.valid){
+      return 'botao';//retorna a classe botao
+    }
+    else{
+      return 'botao_desabilitado'
+    }
   }
 
 }
