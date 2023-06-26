@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Task } from '../task';
 import { TaskService } from '../task.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-task',
@@ -10,34 +10,51 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditTaskComponent implements OnInit {
 
-  task: Task = {
-    id: 0,
-    content: '',
-    author: '',
-    difficulty: ''
-  }
+  formulario!: FormGroup
+
   constructor(
     private service: TaskService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder
     ) { }
 
   ngOnInit(): void {
     const id=this.route.snapshot.paramMap.get('id')//Pega a informação do card da task, no caso id
     this.service.listarPorId(parseInt(id!)).subscribe((task)=>{
-      this.task = task
+      this.formulario = this.formBuilder.group({
+        id: [task.id],
+        content: [task.content, Validators.compose([
+          Validators.required,
+          Validators.pattern(/(.|\s)*\S(.|\s)*/)
+        ])],
+        author: [task.author, Validators.compose([
+          Validators.required,
+          Validators.minLength(3)
+        ])],
+        difficulty: [task.difficulty]
+      })
+
     })
     //Vai procurar pelo id e vai pegar os dados da task que possui o id correspondente
+
   }
 
   editarTask(){
-    this.service.editar(this.task).subscribe(()=>{
+    this.service.editar(this.formulario.value).subscribe(()=>{
       this.router.navigate(['/listarTask'])
     })
   }
 
   cancel(){
     this.router.navigate(['/listarTask'])
+  }
+
+  habilitarBotao(): string {
+    if(this.formulario.valid) {
+      return "botao"
+    }
+    else return "botao_desabilitado"
   }
 
 }

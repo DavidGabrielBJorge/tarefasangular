@@ -2,70 +2,99 @@
   <header class="header">
       <h2>Adicione um <br> pensamento novo:</h2>
   </header>
-  <form>
+  <form [formGroup]="formulario" *ngIf="formulario">
     <!--Inputs dos campos das tarefas-->
     <label for="task">Tarefa:</label>
-<input type="textarea" class="input" id="task" name="task" placeholder="Digite sua tarefa" [(ngModel)]="task.content">
+    <input type="textarea" class="input" id="task" name="task" placeholder="Digite sua tarefa" formControlName="content">
     <!--Aplicando "data binding" bidirecional, para isso deve importar no arquivo app.module.ts o FormsModule-->
+    <div class="mensagem_erro" *ngIf="formulario.get('content')?.errors && formulario.get('content')?.touched">
+      Tarefa é obrigatório!
+    </div>
 
     <label for="author">Responsável:</label>
-    <input type="text" class="input" id="author" name="author" placeholder="Digite o responsável para a sua tarefa" [(ngModel)]="task.author">
+    <input type="text" class="input" id="author" name="author" placeholder="Digite o responsável para a sua tarefa" formControlName="author">
+    <div class="mensagem_erro"
+    *ngIf="formulario.get('author')?.errors?.['required'] && formulario.get('author')?.touched">
+      Autor é obrigatória!
+  </div>
+  <div class="mensagem_erro"
+    *ngIf="formulario.get('author')?.errors?.['minlength'] && formulario.get('author')?.touched">
+      Autoria precisa ter no mínimo 3 caracteres!
+  </div>
+
     <label for="difficulty">Seleciona o nível de atenção da tarefa</label>
 
     <div class="container-radio">
-      <!--difficulty 1 das tarefas-->
-      <div class="radio-difficulty">
-          <label for="difficulty1">
-              <input type="radio" id="difficulty1" value="difficulty1" name="difficulty-card" [(ngModel)]="task.difficulty">
-              <div class="custom-radio">
-                  <span></span>
-              </div>
-              <span>Dificuldade Fácil</span>
-          </label>
-          Prévia
-          <div class="difficulty difficulty1 ff-roboto-mono">
-            <img src="../../../../assets/imagens/modelo1.png" alt="Aspas azuis">
-            <p class="conteudo">{{ task.content }}</p><!--Dessa forma vai pegar a informação do objeto pensamento, categoria-->
-            <p class="autoria"><b>{{ task.author }}</b></p>
-          </div>
-      </div>
 
-      <!--difficulty 2 das tarefas-->
+      <!--Dificuldade 1-->
       <div class="radio-difficulty">
-        <label for="difficulty2">
-            <input type="radio" id="difficulty2" value="difficulty2" name="difficulty-card" [(ngModel)]="task.difficulty">
-            <div class="custom-radio">
-                <span></span>
-            </div>
-            <span>Dificuldade Média</span>
+        <label for="difficulty1">
+          <input
+            type="radio"
+            id="difficulty1"
+            value="difficulty1"
+            formControlName="difficulty"
+          >
+          <div class="custom-radio">
+            <span></span>
+          </div>
+          <span>Fácil</span>
         </label>
-        Prévia
-        <div class="difficulty difficulty2 ff-roboto-mono">
-          <img src="../../../../assets/imagens/modelo2.png" alt="Aspas azuis claro" >
-          <p class="conteudo">{{ task.content }}</p>
-          <p class="autoria"><b>{{ task.author }}</b></p>
+        Prévia:
+        <div class="difficulty difficulty1 ff-roboto-mono">
+          <img src="../../../../assets/imagens/modelo1.png" alt="Aspas azuis">
+          <p class="conteudo">{{ formulario.get('content')?.value }}</p>
+          <p class="autoria"><b>{{ formulario.get('author')?.value}}</b></p>
         </div>
       </div>
 
-          <!--difficulty 3 das tarefas-->
-          <div class="radio-difficulty">
-            <label for="difficulty3">
-                <input type="radio" id="difficulty3" value="difficulty3" name="difficulty-card" [(ngModel)]="task.difficulty">
-                <div class="custom-radio">
-                    <span></span>
-                </div>
-                <span>Dificuldade Difícil</span>
-            </label>
-            Prévia
-            <div class="difficulty difficulty3 ff-roboto-mono">
-              <img src="../../../../assets/imagens/modelo3.png" alt="Aspas verdes">
-              <p class="conteudo">{{ task.content }}</p>
-              <p class="autoria"><b>{{ task.author }}</b></p>
-            </div>
+      <!--Dificuldade 2-->
+      <div class="radio-difficulty">
+        <label for="difficulty2">
+          <input
+            type="radio"
+            id="difficulty2"
+            value="difficulty2"
+            formControlName="difficulty"
+          >
+          <div class="custom-radio">
+            <span></span>
           </div>
+          <span>Médio</span>
+        </label>
+        Prévia:
+        <div class="difficulty difficulty2 ff-roboto-mono">
+          <img src="../../../../assets/imagens/modelo2.png" alt="Aspas azul claro">
+          <p class="conteudo">{{ formulario.get('content')?.value }}</p>
+          <p class="autoria"><b>{{ formulario.get('author')?.value}}</b></p>
+        </div>
+      </div>
+
+      <!--Dificuldade 3-->
+      <div class="radio-difficulty">
+        <label for="difficulty3">
+          <input
+            type="radio"
+            id="difficulty3"
+            value="difficulty3"
+            formControlName="difficulty"
+          >
+          <div class="custom-radio">
+            <span></span>
+          </div>
+          <span>Difícil</span>
+        </label>
+        Prévia:
+        <div class="difficulty difficulty3 ff-roboto-mono">
+          <img src="../../../../assets/imagens/modelo3.png" alt="Aspas verdes">
+          <p class="conteudo">{{ formulario.get('content')?.value }}</p>
+          <p class="autoria"><b>{{ formulario.get('author')?.value}}</b></p>
+        </div>
+      </div>
+
     </div>
     <div class="acoes">
-      <button class="botao" (click)="editarTask()">Editar</button>
+      <button [disabled]="!formulario.valid" (click)="editarTask()" [ngClass]="habilitarBotao()">Editar</button>
       <button class="botao" (click)="cancel()">Cancelar</button>
   </div>
   </form>
