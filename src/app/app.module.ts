@@ -12,6 +12,7 @@ import { TaskModelComponent } from './componentes/task/task-model/task-model.com
 import { HttpClientModule } from '@angular/common/http';
 import { DeleteTaskComponent } from './componentes/task/delete-task/delete-task.component';
 import { EditTaskComponent } from './componentes/task/edit-task/edit-task.component';
+import { BotaoPaginacaoComponent } from './componentes/task/list-task/botao-paginacao/botao-paginacao.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EditTaskComponent } from './componentes/task/edit-task/edit-task.compon
     ListTaskComponent,
     TaskModelComponent,
     DeleteTaskComponent,
-    EditTaskComponent
+    EditTaskComponent,
+    BotaoPaginacaoComponent
   ],
   imports: [
     BrowserModule,

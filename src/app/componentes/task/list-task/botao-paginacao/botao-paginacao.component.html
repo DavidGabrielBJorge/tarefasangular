@@ -1,0 +1,9 @@
+<div class="center" *ngIf="haMaisTask; else semMaisTask">
+  <button class="botao carregar-mais">
+    Carregar mais
+  </button>
+</div>
+
+<ng-template #semMaisTask>
+  <p class="mensagem-center ff-inter">Não há mais tarefas para exibir</p>
+</ng-template>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Task } from './task'
 import { Observable } from 'rxjs';
 /*
@@ -16,8 +16,16 @@ export class TaskService {
   constructor(private http: HttpClient) { }
 
   //método listar tasks
-  listar(): Observable<Task[]>{
-    return this.http.get<Task[]>(this.API)
+  listar(pagina: number): Observable<Task[]>{
+    const tasksPorPagina = 5;
+
+    let params = new HttpParams().set("_page",pagina).set("_limit", tasksPorPagina)
+
+
+    return this.http.get<Task[]>(this.API, {params: params})
+    //No backend o JSON Server possui uma biblioteca de paginação que deve seguir essa ordem: GET /posts?_page=7&_limit=20
+
+    /*Foi usado o HttpParams para criar a paginação na página principal, logo em vez de mostrar todas as tasks vai mostrar de 5 em 5 */
   }
 
   //método criar task
