@@ -16,12 +16,15 @@ export class TaskService {
   constructor(private http: HttpClient) { }
 
   //método listar tasks
-  listar(pagina: number): Observable<Task[]>{
+  listar(pagina: number, filtro: string): Observable<Task[]>{
     const tasksPorPagina = 5;
 
     let params = new HttpParams().set("_page",pagina).set("_limit", tasksPorPagina)
 
-
+    //Pesquisar as tarefas criadas
+    if(filtro.trim().length > 2){
+      params = params.set("q", filtro)
+    }
     return this.http.get<Task[]>(this.API, {params: params})
     //No backend o JSON Server possui uma biblioteca de paginação que deve seguir essa ordem: GET /posts?_page=7&_limit=20
 

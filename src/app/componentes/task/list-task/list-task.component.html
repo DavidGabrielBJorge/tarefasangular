@@ -1,5 +1,12 @@
 <section class="container">
   <header class="header d-flex">
+
+    <!--Buscar task-->
+    <div class="buscar-pensamentos">
+      <input type="search" class="filtro" placeholder="O que você procura" autofocus [(ngModel)]="filtro" (keyup)="pesquisarTarefa()">
+      <img src="../../../../assets/imagens/lupa.svg" alt="Lupa preta de pesquisa">
+    </div>
+
     <h2 class="title ff-inter">Minhas tarefas</h2>
     <button routerLink="/criarTask" class="botao">Adicionar tarefa</button>
   </header>
