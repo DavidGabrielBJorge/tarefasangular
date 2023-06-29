@@ -4,97 +4,113 @@
       "id": 1,
       "content": "Testando o banco 1",
       "author": "David",
-      "difficulty": "difficulty3"
+      "difficulty": "difficulty3",
+      "favorito": false
     },
     {
       "id": 3,
       "content": "Testando o banco 3",
       "author": "Pedro",
-      "difficulty": "difficulty2"
+      "difficulty": "difficulty2",
+      "favorito": true
     },
     {
       "content": "Testando o cadastro de task",
       "author": "Paulo Ferreira",
       "difficulty": "difficulty3",
-      "id": 4
+      "id": 4,
+      "favorito": true
     },
     {
       "content": "Editando pensamento",
       "author": "Carlos",
       "difficulty": "difficulty3",
-      "id": 5
+      "id": 5,
+      "favorito": false
     },
     {
       "id": 8,
       "content": "Beleza ao amanhecer",
       "author": "Mariela",
-      "difficulty": "difficulty2"
+      "difficulty": "difficulty2",
+      "favorito": false
     },
     {
       "content": "aaaaaaaaaa",
       "author": "SSSS",
       "difficulty": "difficulty1",
-      "id": 9
+      "id": 9,
+      "favorito": false
     },
     {
       "content": "FFFFFFFFFF",
       "author": "XXXXXXXXXXXXX",
       "difficulty": "difficulty2",
-      "id": 10
+      "id": 10,
+      "favorito": false
     },
     {
       "content": "GGGGGGGG",
       "author": "JJJJJJJJJJJ",
       "difficulty": "difficulty1",
-      "id": 11
+      "id": 11,
+      "favorito": false
     },
     {
       "content": "ZZZZZZZZZZZZZ",
       "author": "RRRRRRRRRRRRR",
       "difficulty": "difficulty1",
-      "id": 12
+      "id": 12,
+      "favorito": false
     },
     {
       "content": "TTTTTTTTTTTT",
       "author": "HHHHHHHHHHHHHHHHH",
       "difficulty": "difficulty3",
-      "id": 13
+      "id": 13,
+      "favorito": false
     },
     {
       "content": "Vai Marquinhos",
       "author": "David",
       "difficulty": "difficulty3",
-      "id": 14
+      "id": 14,
+      "favorito": false
     },
     {
       "content": "teste 1",
       "author": "David",
       "difficulty": "difficulty1",
-      "id": 15
+      "id": 15,
+      "favorito": false
     },
     {
       "content": "teste 2",
       "author": "David",
       "difficulty": "difficulty2",
-      "id": 16
+      "id": 16,
+      "favorito": false
     },
     {
       "content": "teste 3",
       "author": "David",
       "difficulty": "difficulty1",
-      "id": 17
+      "id": 17,
+      "favorito": false
     },
     {
       "content": "teste 4 ",
       "author": "David",
       "difficulty": "difficulty2",
-      "id": 18
+      "id": 18,
+      "favorito": false
     },
     {
       "content": "teste 5 ",
       "author": "David",
       "difficulty": "difficulty3",
-      "id": 19
+      "id": 19,
+      "favorito": false
     }
   ]
 }

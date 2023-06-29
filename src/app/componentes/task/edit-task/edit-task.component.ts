@@ -32,7 +32,8 @@ export class EditTaskComponent implements OnInit {
           Validators.required,
           Validators.minLength(3)
         ])],
-        difficulty: [task.difficulty]
+        difficulty: [task.difficulty],
+        favorito:[task.favorito]
       })
 
     })

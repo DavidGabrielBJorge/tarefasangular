@@ -53,6 +53,17 @@ export class TaskService {
     return this.http.put<Task>(url, task)
   }
 
+  //Método para atualizar o pensamento e passar o favorito de inativo para ativo
+  mudarFavorito(task: Task): Observable<Task>{
+    task.favorito = !task.favorito
+    const url = `${this.API}/${task.id}`
+    return this.editar(task)
+
+    /* Tanto o editar quanto o mudarFavorito retornam a mesma coisa, portanto para evitar repetição basta chamar o método editar
+    return this.http.put<Task>(url, task)*/
+
+  }
+
 
 }
 /*

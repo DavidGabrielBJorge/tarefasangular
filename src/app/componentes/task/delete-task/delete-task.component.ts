@@ -14,7 +14,8 @@ export class DeleteTaskComponent implements OnInit {
     id: 0,
     content: '',
     author: '',
-    difficulty:''
+    difficulty:'',
+    favorito: false
 
   }
   constructor(

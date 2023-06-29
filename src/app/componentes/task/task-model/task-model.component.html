@@ -3,6 +3,9 @@
   <p class="conteudo">{{task.content}}</p>
   <p class="autoria"><b>{{task.author}}</b></p>
   <div class="acoes">
+    <button class="botao-favorito" (click)="atualizarFavoritos()">
+      <img class="favorito" src="../../../../assets/imagens/favorito_{{ mudarIconeFavorito() }}.svg" alt="Icone de favorito {{ mudarIconeFavorito() }}">
+    </button>
     <button class="botao-editar">
       <img src="/assets/imagens/icone-editar.png" routerLink="/tasks/editarTask/{{task.id}}" alt="Iconde de edição">
     </button>

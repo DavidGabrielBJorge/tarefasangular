@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Task } from '../task';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-task-model',
@@ -14,11 +15,12 @@ export class TaskModelComponent implements OnInit {
   */
   @Input() task: Task ={
     id: 0,
-    content: 'Estudar Angular',
-    author: 'Ciclano',
-    difficulty:'difficulty2'
+    content: '',
+    author: '',
+    difficulty:'',
+    favorito: false
   }
-  constructor() { }
+  constructor(private service: TaskService) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +30,20 @@ export class TaskModelComponent implements OnInit {
       return 'task-g';//Retorna um estilo
     }
     return 'task-p';
+  }
+
+  mudarIconeFavorito(): string{
+    if(this.task.favorito == false){
+      return 'inativo'
+    }
+    else{
+      return 'ativo'
+    }
+  }
+
+  atualizarFavoritos(){
+    this.service.mudarFavorito(this.task).subscribe();
+    console.log(this.task.favorito)
   }
 
 }

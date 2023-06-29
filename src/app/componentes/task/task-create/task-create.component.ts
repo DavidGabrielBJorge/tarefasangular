@@ -32,7 +32,8 @@ export class TaskCreateComponent implements OnInit {
         Validators.required,
         Validators.minLength(3)
       ])],
-      difficulty:['difficulty1']
+      difficulty:['difficulty1'],
+      favoritto:[false]
 
       //Validators.compose é usado para usar mais de um tipo de validação
     })
