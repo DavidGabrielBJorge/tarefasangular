@@ -16,6 +16,16 @@
   text-align: center;
 }
 
+.botoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.botoes button {
+  margin-left: 10px;
+  margin-right: 2px;
+}
+
 .botao{
   background-color: #4CAF50;
   border: none;
@@ -38,11 +48,6 @@
   text-align: center;
   padding: 2rem 0 5rem;
 }
-
-
-
-
-
 
 .d-flex{
   display: flex;

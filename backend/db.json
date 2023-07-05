@@ -5,7 +5,7 @@
       "content": "Testando o banco 1",
       "author": "David",
       "difficulty": "difficulty3",
-      "favorito": false
+      "favorito": true
     },
     {
       "id": 3,
@@ -19,14 +19,14 @@
       "author": "Paulo Ferreira",
       "difficulty": "difficulty3",
       "id": 4,
-      "favorito": true
+      "favorito": false
     },
     {
       "content": "Editando pensamento",
       "author": "Carlos",
       "difficulty": "difficulty3",
       "id": 5,
-      "favorito": false
+      "favorito": true
     },
     {
       "id": 8,

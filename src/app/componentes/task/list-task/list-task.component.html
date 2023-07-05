@@ -7,15 +7,20 @@
       <img src="../../../../assets/imagens/lupa.svg" alt="Lupa preta de pesquisa">
     </div>
 
-    <h2 class="title ff-inter">Minhas tarefas</h2>
-    <button routerLink="/criarTask" class="botao">Adicionar tarefa</button>
+    <h2 class="title ff-inter">{{ titulo }}</h2>
+    <div class="botoes">
+      <button (click)="recarregarComponente()" class="botao">Minhas tarefas</button>
+      <button class="botao" (click)="listarFavoritos()">Meus favoritos</button>
+      <button routerLink="/criarTask" class="botao">Nova tarefa</button>
+    </div>
+
   </header>
   <!--Caso a listTask for maior que zero deve gerar a div abaixo se não, não vai gerar-->
   <div class="mural" *ngIf="listTasks.length > 0, else noTasks">
 
     <!--Para mostrar todas as tarefas já criadas é preciso criar uma estrutura de repetição-->
     <div *ngFor="let task of listTasks">
-      <app-task-model [task]="task"></app-task-model>
+      <app-task-model [task]="task" [listaFavoritos]="listaFavoritos"></app-task-model>
       <!--O task vai receber a variável local task(que representa cada um dos elementos) -->
     </div>
 

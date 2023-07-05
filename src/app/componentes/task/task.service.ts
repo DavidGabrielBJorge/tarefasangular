@@ -16,7 +16,7 @@ export class TaskService {
   constructor(private http: HttpClient) { }
 
   //método listar tasks
-  listar(pagina: number, filtro: string): Observable<Task[]>{
+  listar(pagina: number, filtro: string, favoritos: boolean): Observable<Task[]>{
     const tasksPorPagina = 5;
 
     let params = new HttpParams().set("_page",pagina).set("_limit", tasksPorPagina)
@@ -25,6 +25,12 @@ export class TaskService {
     if(filtro.trim().length > 2){
       params = params.set("q", filtro)
     }
+
+    //Vai conferir se vai mostrar somente as tasks com o favorito ou não
+    if(favoritos){
+      params=params.set("favorito",true)
+    }
+
     return this.http.get<Task[]>(this.API, {params: params})
     //No backend o JSON Server possui uma biblioteca de paginação que deve seguir essa ordem: GET /posts?_page=7&_limit=20
 
@@ -63,6 +69,8 @@ export class TaskService {
     return this.http.put<Task>(url, task)*/
 
   }
+
+
 
 
 }

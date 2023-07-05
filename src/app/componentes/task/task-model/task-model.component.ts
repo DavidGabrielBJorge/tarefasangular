@@ -20,6 +20,9 @@ export class TaskModelComponent implements OnInit {
     difficulty:'',
     favorito: false
   }
+
+  @Input() listaFavoritos: Task[] = [];
+
   constructor(private service: TaskService) { }
 
   ngOnInit(): void {
@@ -42,8 +45,10 @@ export class TaskModelComponent implements OnInit {
   }
 
   atualizarFavoritos(){
-    this.service.mudarFavorito(this.task).subscribe();
-    console.log(this.task.favorito)
+    this.service.mudarFavorito(this.task).subscribe(()=>{
+      this.listaFavoritos.splice(this.listaFavoritos.indexOf(this.task),1)//Ao tirar o favorito, vai remover a task da exibição
+    });
+
   }
 
 }
